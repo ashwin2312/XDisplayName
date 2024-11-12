@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 const DisplayName = () => {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  //   const [fullname, setFullname] = useState({ firstname: "", lastname: "" });
+  const [fullname, setFullname] = useState({ firstname: "", lastname: "" });
   return (
     <div>
       <div
@@ -14,7 +12,14 @@ const DisplayName = () => {
         }}
       >
         <h3>Enter FirstName:</h3>
-        <input type="text" style={{ height: "20px" }} value={firstname} />
+        <input
+          type="text"
+          style={{ height: "20px" }}
+          value={fullname.firstname}
+          onChange={(e) =>
+            setFullname({ ...fullname, firstname: e.target.value })
+          }
+        />
       </div>
       <div
         style={{
@@ -24,10 +29,17 @@ const DisplayName = () => {
         }}
       >
         <h3>Enter LastName:</h3>
-        <input type="text" style={{ height: "20px" }} value={lastname} />
+        <input
+          type="text"
+          style={{ height: "20px" }}
+          value={fullname.lastname}
+          onChange={(e) =>
+            setFullname({ ...fullname, lastname: e.target.value })
+          }
+        />
       </div>
       <h3>
-        {firstname} {lastname}
+        {fullname.firstname} {fullname.lastname}
       </h3>
     </div>
   );
